@@ -13,13 +13,13 @@ class loginController {
     next();
   }
 
-  // static async loginAcess(req: Request, res: Response) {
-  //   const token = req.header('authorization');
-  //   if (!token) return res.status(400).json({ message: 'invalid token' });
-  //   const roleAuthorization = userService.validUse(token);
-  //   if (!roleAuthorization) return res.status(400).json({ message: 'invalid' });
-  //   res.status(200).json({ role: roleAuthorization });
-  // }
+  static async loginAcess(req: Request, res: Response) {
+    const { authorization } = req.headers;
+    if (!authorization) return res.status(200).json({ message: 'deu ruim' });
+    const role = await userService.validUse(authorization);
+
+    res.status(200).json(role);
+  }
 }
 
 export default loginController;

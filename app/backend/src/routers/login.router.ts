@@ -5,6 +5,6 @@ import validationEmailPassword from '../middlewares/loginMidd';
 const router = Router();
 
 router.post('/', validationEmailPassword, userController.login);
-// router.get('/validate', userController.loginAcess);
+router.get('/validate', userController.loginAcess);
 
 export default router;

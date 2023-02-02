@@ -9,11 +9,12 @@ const jwtConfig = {
 
 export default class generateJwt {
   static createToken(user: string) {
-    const token = jwt.sign({ data: user }, secret, jwtConfig);
+    const token = jwt.sign({ email: user }, secret, jwtConfig);
     return token;
   }
 
   static verify(token:string) {
-    return jwt.verify(token, secret);
+    const tokenVerify = jwt.verify(token, secret);
+    return tokenVerify;
   }
 }
