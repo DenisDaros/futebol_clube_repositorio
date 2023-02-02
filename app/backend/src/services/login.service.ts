@@ -1,6 +1,6 @@
 import bcrypt = require('bcryptjs');
 import User from '../database/models/User';
-import { Ilogin, Itoken, Ivalid, Irole } from '../types/index';
+import { Ilogin, Itoken } from '../types/index';
 import jwt from '../middlewares/jwt';
 
 class userService {
@@ -9,8 +9,6 @@ class userService {
 
     if (user) {
       await bcrypt.compare(password, user.password);
-    } else {
-      return undefined;
     }
 
     const token = jwt.createToken(email);
@@ -18,13 +16,13 @@ class userService {
     return { token };
   }
 
-  static async validUse(token: string): Promise<Irole | undefined> {
-    const { email } = jwt.verify(token) as Ivalid;
-    const user = await User.findOne({ where: { email } });
-    if (!user) return undefined;
-    const { role } = user;
-    return { role };
-  }
+  // static async validUse(token: string): Promise<Irole | undefined> {
+  //   const { email } = jwt.verify(token) as Ivalid;
+  //   const user = await User.findOne({ where: { email } });
+  //   if (!user) return undefined;
+  //   const { role } = user;
+  //   return { role };
+  // }
 }
 
 export default userService;
