@@ -4,15 +4,12 @@ import userService from '../services/login.service';
 class loginController {
   static async login(req: Request, res: Response, next: NextFunction) {
     const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(400).json({ message: 'All fields must be filled' });
-    }
 
-    const token = await userService.findUser(req.body);
-    if (!token) {
-      return res.status(400).json({ message: 'All fields must be filled' });
+    const { message, token } = await userService.findUser(email, password);
+    if (message) {
+      return res.status(401).json({ message: 'Incorrect email or password' });
     }
-    res.status(200).json(token);
+    res.status(200).json({ token });
     next();
   }
 

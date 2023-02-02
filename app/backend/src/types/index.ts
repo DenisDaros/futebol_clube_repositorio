@@ -5,6 +5,7 @@ export interface Ilogin {
 
 export interface Itoken {
   token:string,
+  type:string,
 }
 
 export interface Ivalid {
