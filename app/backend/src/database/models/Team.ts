@@ -1,8 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
-import Match from './Match';
 import db from '.';
 
-class Team extends Model {
+export default class Team extends Model {
   declare id: number;
   declare teamName: string;
 }
@@ -16,6 +15,8 @@ Team.init({
   },
   teamName: {
     type: DataTypes.STRING,
+    field: 'team_name',
+    allowNull: false,
   },
 }, {
   sequelize: db,
@@ -23,8 +24,3 @@ Team.init({
   timestamps: false,
   tableName: 'teams',
 });
-
-Team.hasMany(Match, { foreignKey: 'homeTeamId', as: 'homeTeamId' });
-Team.hasMany(Match, { foreignKey: 'awayTeamId', as: 'awayTeamId' });
-
-export default Team;
