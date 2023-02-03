@@ -3,7 +3,7 @@ import Team from '../database/models/Team';
 import { Icreatem } from '../types';
 
 class matchesService {
-  static async allmatches() {
+  static async allmatches(): Promise<object> {
     const matches = await Match.findAll({
       include: [
         {
@@ -18,7 +18,7 @@ class matchesService {
     return matches;
   }
 
-  static async allmatchesProgress() {
+  static async allmatchesProgress(): Promise<object> {
     const matches = await Match.findAll({ where: { inProgress: true },
       include: [
         {
@@ -33,7 +33,7 @@ class matchesService {
     return matches;
   }
 
-  static async allmatchesToEnd() {
+  static async allmatchesToEnd(): Promise<object> {
     const matches = await Match.findAll({ where: { inProgress: false },
       include: [
         {
@@ -62,6 +62,10 @@ class matchesService {
       inProgress: true,
     });
     return matchCreate;
+  }
+
+  static async updateMatches(id: number) {
+    await Match.update({ inProgress: false }, { where: { id } });
   }
 }
 

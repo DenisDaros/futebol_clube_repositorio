@@ -25,6 +25,14 @@ class matchesController {
 
     next();
   }
+
+  static async updateMatches(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
+    const teste = parseInt(id, 10);
+    await matchesService.updateMatches(teste);
+    res.status(200).json({ message: 'Finished' });
+    next();
+  }
 }
 
 export default matchesController;

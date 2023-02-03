@@ -6,5 +6,6 @@ const router = Router();
 
 router.get('/', matchesController.allmatches);
 router.post('/', validationEmailPassword, matchesController.saveMatches);
+router.patch('/:id/finish', matchesController.updateMatches);
 
 export default router;
