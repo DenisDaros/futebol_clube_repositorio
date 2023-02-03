@@ -8,6 +8,9 @@ class matchesController {
     if (inProgress === 'true') {
       const matches = await matchesService.allmatchesProgress();
       res.status(200).json(matches);
+    } else if (inProgress === 'false') {
+      const matches = await matchesService.allmatchesToEnd();
+      res.status(200).json(matches);
     } else {
       const matches = await matchesService.allmatches();
       res.status(200).json(matches);

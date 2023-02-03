@@ -31,6 +31,21 @@ class matchesService {
 
     return matches;
   }
+
+  static async allmatchesToEnd() {
+    const matches = await Match.findAll({ where: { inProgress: false },
+      include: [
+        {
+          model: Team, as: 'homeTeam', attributes: { exclude: ['id'] },
+        },
+        {
+          model: Team, as: 'awayTeam', attributes: { exclude: ['id'] },
+        },
+      ],
+    });
+
+    return matches;
+  }
 }
 
 export default matchesService;
