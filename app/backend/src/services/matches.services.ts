@@ -67,6 +67,10 @@ class matchesService {
   static async updateMatches(id: number) {
     await Match.update({ inProgress: false }, { where: { id } });
   }
+
+  static async updateMatchesInProgress(id: number, homeTeamGoals: number, awayTeamGoals: number) {
+    await Match.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
+  }
 }
 
 export default matchesService;

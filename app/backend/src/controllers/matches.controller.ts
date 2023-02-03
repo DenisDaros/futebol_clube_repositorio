@@ -33,6 +33,15 @@ class matchesController {
     res.status(200).json({ message: 'Finished' });
     next();
   }
+
+  static async updateMatchesInProgress(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+    const teste = parseInt(id, 10);
+    await matchesService.updateMatchesInProgress(teste, homeTeamGoals, awayTeamGoals);
+    res.status(200).json({ message: 'Updated!' });
+    next();
+  }
 }
 
 export default matchesController;

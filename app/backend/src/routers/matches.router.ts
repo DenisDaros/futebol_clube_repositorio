@@ -9,5 +9,6 @@ const router = Router();
 router.get('/', matchesController.allmatches);
 router.post('/', validationTokenUser, existTeams, compareTeams, matchesController.saveMatches);
 router.patch('/:id/finish', matchesController.updateMatches);
+router.patch('/:id', matchesController.updateMatchesInProgress);
 
 export default router;
