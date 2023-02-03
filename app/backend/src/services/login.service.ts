@@ -19,9 +19,10 @@ class userService {
     return { message: 'Incorrect email or password' };
   }
 
-  static async validUse(token: string): Promise<object | undefined> {
+  static async validUse(token: string) {
     const { email } = jwt.verify(token) as Ivalid;
     const user = await User.findOne({ where: { email } });
+    // console.log(user);
 
     if (!user) return undefined;
     const { role } = user;

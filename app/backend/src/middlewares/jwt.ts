@@ -14,7 +14,11 @@ export default class generateJwt {
   }
 
   static verify(token:string) {
-    const tokenVerify = jwt.verify(token, secret);
-    return tokenVerify;
+    try {
+      const tokenVerify = jwt.verify(token, secret);
+      return tokenVerify;
+    } catch {
+      return { message: 'Token must be a valid token' };
+    }
   }
 }

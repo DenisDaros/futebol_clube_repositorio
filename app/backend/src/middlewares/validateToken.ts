@@ -1,13 +1,16 @@
 import { Request, Response, NextFunction } from 'express';
-import validateToken from '../utils/validateToken';
+import jwt from './jwt';
+import { Ivalid } from '../types';
 
 export default function validationTokenUser(req: Request, res: Response, next: NextFunction) {
   const { authorization } = req.headers;
   if (!authorization) {
     return res.status(400).json({ message: 'token nonexistent' });
   }
-  if (!validateToken.validUse(authorization)) {
-    return res.status(200).json({ message: 'token invalid' });
+  const { email } = jwt.verify(authorization) as Ivalid;
+
+  if (!email) {
+    return res.status(401).json({ message: 'Token must be a valid token' });
   }
   return next();
 }
