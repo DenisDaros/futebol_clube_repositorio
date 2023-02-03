@@ -6,7 +6,7 @@ class teamsService {
     return teams;
   }
 
-  static async TeamsById(id: string): Promise<object | null> {
+  static async TeamsById(id: number) {
     const teams = await Team.findByPk(id);
     return teams;
   }

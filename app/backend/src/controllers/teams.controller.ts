@@ -10,7 +10,8 @@ class teamsController {
 
   static async TeamsById(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
-    const team = await teamsService.TeamsById(id);
+    const teste = parseInt(id, 10);
+    const team = await teamsService.TeamsById(teste);
     res.status(200).json(team);
     next();
   }
