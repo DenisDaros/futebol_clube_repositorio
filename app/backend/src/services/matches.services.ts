@@ -1,5 +1,6 @@
 import Match from '../database/models/Match';
 import Team from '../database/models/Team';
+import { Icreatem } from '../types';
 
 class matchesService {
   static async allmatches() {
@@ -45,6 +46,22 @@ class matchesService {
     });
 
     return matches;
+  }
+
+  static async saveMatches({
+    homeTeamId,
+    awayTeamId,
+    homeTeamGoals,
+    awayTeamGoals,
+  }: Icreatem) {
+    const matchCreate = await Match.create({
+      homeTeamId,
+      awayTeamId,
+      homeTeamGoals,
+      awayTeamGoals,
+      inProgress: true,
+    });
+    return matchCreate;
   }
 }
 

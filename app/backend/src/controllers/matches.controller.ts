@@ -18,6 +18,13 @@ class matchesController {
 
     next();
   }
+
+  static async saveMatches(req: Request, res: Response, next: NextFunction) {
+    const matches = await matchesService.saveMatches(req.body);
+    res.status(201).json(matches);
+
+    next();
+  }
 }
 
 export default matchesController;

@@ -20,7 +20,7 @@ class userService {
   }
 
   static async validUse(token: string): Promise<object | undefined> {
-    const { email } = await jwt.verify(token) as Ivalid;
+    const { email } = jwt.verify(token) as Ivalid;
     const user = await User.findOne({ where: { email } });
 
     if (!user) return undefined;

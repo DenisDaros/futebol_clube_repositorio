@@ -15,3 +15,10 @@ export interface Ivalid {
 export interface Irole {
   role:string
 }
+
+export interface Icreatem {
+  homeTeamId: string,
+  awayTeamId: string,
+  homeTeamGoals: string,
+  awayTeamGoals: string,
+}
