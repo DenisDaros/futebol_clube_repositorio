@@ -22,3 +22,12 @@ export interface Icreatem {
   homeTeamGoals: string,
   awayTeamGoals: string,
 }
+
+export interface Imatch {
+  id?:number,
+  homeTeamId: number,
+  homeTeamGoals:number,
+  awayTeamId:number,
+  awayTeamGoals:number,
+  inProgress: boolean,
+}

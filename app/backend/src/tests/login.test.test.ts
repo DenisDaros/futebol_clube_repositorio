@@ -42,5 +42,16 @@ it('deve retornar um status 401 com a mensagem "Incorrect email or password"', a
       })
 })
 
+// it('deve retornar um role do usuario', async () => {
+//     const httpResponse = await chai
+//     .request(app)
+//     .post('/login')
+//     .send(userPasswordIncorrect)
+//     expect(httpResponse.status).to.equal(401)
+//     expect(httpResponse.body).to.deep.equal({
+//         "message": "Incorrect email or password"
+//       })
+// })
+
     })
 })
