@@ -31,3 +31,7 @@ export interface Imatch {
   awayTeamGoals:number,
   inProgress: boolean,
 }
+
+export interface Ifind {
+  findAllTeams(): Promise<object>
+}
